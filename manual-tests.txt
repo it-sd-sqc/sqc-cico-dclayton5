@@ -61,4 +61,21 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 4: Numerical input verification
 
+## Test steps
+1. Build and run CiCo.
+2. Enter non-numeric characters and click update.
+
+## Expected results
+* Should ignore input
+
+# Module 5: Check in/out timeout
+
+## Test steps
+1. Build and run CiCo
+2. Enter 00000000 into the field and click update
+3. Click Done
+
+## Expected results
+* Should close check in/out screen.
