@@ -68,9 +68,8 @@ Ensure that the card entry automatically submits when the last digit is entered.
 ## Steps
 1. Launch the CiCo application.
 2. Click the card number text field.
-3. Type a full valid card number (e.g., 12345678 or whatever the system expects).
+3. Type a full valid card number (8 digits, e.g., 00000000).
 4. Observe that:
    - The entry automatically submits when the final digit is typed.
-   - There is no need to press Enter or click a button.
-   - The old Submit button has been removed.
+   - The old Update button is no longer present.
 
