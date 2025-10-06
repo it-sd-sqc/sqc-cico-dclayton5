@@ -46,6 +46,14 @@ public class Main {
         } else {
             Toolkit.getDefaultToolkit().beep();
         }
+        throws BadLocationException
+    {
+      if (fb.getDocument() != null && stringToAdd.matches("[0-9]")) {
+        super.insertString(fb, offset, stringToAdd, attr);
+      }
+      else {
+        Toolkit.getDefaultToolkit().beep();
+      }
     }
 
     @Override
@@ -65,6 +73,14 @@ public class Main {
             // Auto-submit when the last digit is entered
             Main.processCard();
         }
+        throws BadLocationException
+    {
+      if (fb.getDocument() != null && (stringToAdd.isEmpty() || stringToAdd.matches("[0-9]"))) {
+        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+      }
+      else {
+        Toolkit.getDefaultToolkit().beep();
+      }
     }
   }
 
@@ -289,6 +305,13 @@ public class Main {
     labelState.setAlignmentX(JComponent.CENTER_ALIGNMENT);
     labelState.setForeground(Color.magenta);
     panelStatus.add(labelState);
+
+    buttonAcknowledge = new JButton("Done");
+    buttonAcknowledge.addActionListener(handler);
+    buttonAcknowledge.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    buttonAcknowledge.setForeground(Color.blue);
+    panelStatus.add(buttonAcknowledge);
+    panelStatus.add(Box.createVerticalGlue());
 
     panelStatus.add(Box.createVerticalGlue());
 

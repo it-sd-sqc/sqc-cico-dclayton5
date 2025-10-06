@@ -72,4 +72,21 @@ Ensure that the card entry automatically submits when the last digit is entered.
 4. Observe that:
    - The entry automatically submits when the final digit is typed.
    - The old Update button is no longer present.
+# Module 4: Numerical input verification
 
+## Test steps
+1. Build and run CiCo.
+2. Enter non-numeric characters and click update.
+
+## Expected results
+* Should ignore input
+
+# Module 5: Check in/out timeout
+
+## Test steps
+1. Build and run CiCo
+2. Enter 00000000 into the field and click update
+3. Click Done
+
+## Expected results
+* Should close check in/out screen.
