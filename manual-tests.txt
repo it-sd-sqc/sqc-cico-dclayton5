@@ -61,6 +61,17 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Manual Test for Ticket 601
+## Purpose
+Ensure that the card entry automatically submits when the last digit is entered.
+
+## Steps
+1. Launch the CiCo application.
+2. Click the card number text field.
+3. Type a full valid card number (8 digits, e.g., 00000000).
+4. Observe that:
+   - The entry automatically submits when the final digit is typed.
+   - The old Update button is no longer present.
 # Module 4: Numerical input verification
 
 ## Test steps

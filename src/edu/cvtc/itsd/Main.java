@@ -39,6 +39,13 @@ public class Main {
 
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
+            throws BadLocationException {
+        if (fb.getDocument() != null) {
+            super.insertString(fb, offset, stringToAdd, attr);
+            checkComplete(fb);
+        } else {
+            Toolkit.getDefaultToolkit().beep();
+        }
         throws BadLocationException
     {
       if (fb.getDocument() != null && stringToAdd.matches("[0-9]")) {
@@ -51,6 +58,21 @@ public class Main {
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
+            throws BadLocationException {
+        if (fb.getDocument() != null) {
+            super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+            checkComplete(fb);
+        } else {
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }
+
+    private void checkComplete(FilterBypass fb) throws BadLocationException {
+        String text = fb.getDocument().getText(0, fb.getDocument().getLength());
+        if (text.length() == MAX_LENGTH) {
+            // Auto-submit when the last digit is entered
+            Main.processCard();
+        }
         throws BadLocationException
     {
       if (fb.getDocument() != null && (stringToAdd.isEmpty() || stringToAdd.matches("[0-9]"))) {
@@ -61,6 +83,7 @@ public class Main {
       }
     }
   }
+
 
   // Lookup the card information after button press ///////////////////////////
   public static class Update implements ActionListener {
@@ -259,12 +282,6 @@ public class Main {
     fieldNumber.setBackground(Color.green);
     fieldNumber.setForeground(Color.magenta);
     panelMain.add(fieldNumber);
-
-    JButton updateButton = new JButton("Update");
-    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    updateButton.addActionListener(new Update());
-    updateButton.setForeground(Color.green);
-    panelMain.add(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 
